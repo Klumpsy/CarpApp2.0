@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "bootstrap": "^5.2.2"
+  },
+  "devDependencies": {
+    "@popperjs/core": "^2.11.6",
+    "install": "^0.13.0",
+    "jquery": "^3.6.1"
+  }
+}
