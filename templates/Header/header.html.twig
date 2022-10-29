@@ -1,0 +1,29 @@
+
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark" aria-label="Third navbar example">
+    <div class="container-fluid">
+        <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+            <img class="header_logo" src="{{ asset('images/CarPP_logo.png') }}">
+        </a>
+        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-collapse collapse" id="navbarsExample03" style="">
+            <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+                <li class="nav-item">
+                    <a class="nav-link {% if app.request.get('_route') == 'homepage'%}active{% endif %}" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if app.request.get('_route') == 'news'%}active{% endif %}" aria-current="page" href="#">Nieuws</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if app.request.get('_route') == 'catch_of_the_day'%}active{% endif %}" aria-current="page" href="#">Vangst van de dag</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if app.request.get('_route') == 'my_carp'%}active{% endif %}" aria-current="page" href="#">mijn Carpp</a>
+                </li>
+            </ul>
+            <a class="btn btn-light">Login</a>
+        </div>
+    </div>
+</nav>
