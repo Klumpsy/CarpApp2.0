@@ -23,7 +23,10 @@
                     <a class="nav-link {% if app.request.get('_route') == 'my_carp'%}active{% endif %}" aria-current="page" href="#">mijn Carpp</a>
                 </li>
             </ul>
-            <a class="btn btn-light">Login</a>
+            <div class="btn_container_group">
+                <a href = '{{ path('signup_page') }}'class="btn btn-light">Signup</a>
+                <a href = '{{ path('login_page') }}' class="btn btn-warning">Login</a>
+            </div>
         </div>
     </div>
 </nav>
