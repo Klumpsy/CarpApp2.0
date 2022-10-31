@@ -2,34 +2,33 @@
 
 namespace App\Entity;
 
+use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-//#[ORM\Entity(repositoryClass: UserRepository::class)]
-#[ORM\Entity]
+#[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: 'user')]
 //#[UniqueEntity(fields: ['email'], message: 'There is already an account with this username')]
 class User implements UserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
-    private $id;
+    #[ORM\Column(name: 'id', type: 'integer')]
+    private int $id;
 
     #[ORM\Column(name: 'email',type: "string", length: 32, unique: true, nullable: false)]
-    private $email;
+    private string $email;
 
-    #[ORM\Column(type: 'json')]
+    #[ORM\Column(name: 'roles', type: 'json')]
     private $roles = [];
 
-    #[ORM\Column(type: 'string')]
-    private $password;
+    #[ORM\Column(name: 'password', type: 'string')]
+    private string $password;
 
     /**
      * @param mixed $id
      */
-    public function setId($id): void
+    public function setId(int $id): void
     {
         $this->id = $id;
     }
@@ -78,9 +77,9 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getUserIdentifier(): string
+    public function getUserIdentifier():string
     {
-        // TODO: Implement getUserIdentifier() method.
+        return $this->email;
     }
 
     public function eraseCredentials()

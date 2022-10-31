@@ -22,3 +22,7 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    App\Security\LoginFormAuthenticator:
+        # the Rot13Transformer will be passed as the $transformer argument
+        autowire: true
