@@ -3,6 +3,10 @@
     max-width: 100px;
   }
 
+.btn_container_group a{
+  margin: 5px;
+}
+
 body {
   background-image: url("../../public/images/carpp_background.jpg");
   background-repeat: no-repeat;
@@ -10,4 +14,12 @@ body {
   background-size: cover;
   height: 100%;
   min-height: 100vh;
+}
+
+
+//Container backgrounds
+
+.container_background_color {
+  background-color: rgba(39, 36, 44, 0.64);
+  color: red;
 }

@@ -1,0 +1,12 @@
+.profile_edit_icon {
+  color: black;
+  position: absolute;
+}
+.profile_edit_icon:hover {
+  cursor: pointer;
+}
+.profile_edit_icon:hover {
+  color: #8ab478;
+}
+
+/*# sourceMappingURL=profile_page.css.map */
