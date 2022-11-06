@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}
+    {% include 'Header/header.html.twig' %}
+{% endblock %}
+
+{% block body %}
+    <section>
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card mb-4">
+                        <div class="card-body text-center">
+                            <div class="container">
+                                <h6 class="">Kies Avatar</h6>
+                                {{ form_start(form) }}
+                                <div class="py-5"> {{ form_widget(form.avatar) }}</div>
+                                <div> {{ form_widget(form.save) }}</div>
+                                {{ form_end(form) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

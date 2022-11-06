@@ -2,6 +2,7 @@
 
 namespace App\Controller\Security;
 
+use mysql_xdevapi\Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -19,4 +20,11 @@ class LoginController extends AbstractController
             'login_error' => $authenticationUtils->getLastAuthenticationError()
         ]);
     }
+
+    #[Route('/logout', name:'logout_page')]
+    public function logout(): Response
+    {
+       throw new Exception('this should never be reached');
+    }
+
 }

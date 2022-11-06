@@ -17,15 +17,28 @@
                     <a class="nav-link {% if app.request.get('_route') == 'news'%}active{% endif %}" aria-current="page" href="#">Nieuws</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {% if app.request.get('_route') == 'catch_of_the_day'%}active{% endif %}" aria-current="page" href="#">Vangst van de dag</a>
+                    <a class="nav-link {% if app.request.get('_route') == 'fishing_session_collection'%}active{% endif %}" aria-current="page" href="#">Sessies</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {% if app.request.get('_route') == 'my_carp'%}active{% endif %}" aria-current="page" href="#">mijn Carpp</a>
+                    <a class="nav-link {% if app.request.get('_route') == 'water_collection'%}active{% endif %}" aria-current="page" href="#">Wateren</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if app.request.get('_route') == 'catch_collection'%}active{% endif %}" aria-current="page" href="#">Vangsten</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if app.request.get('_route') == 'profile'%}active{% endif %}"
+                       aria-current="page"
+                       href="{{ path('profile') }}">Mijn profiel
+                    </a>
                 </li>
             </ul>
             <div class="btn_container_group">
-                <a href = '{{ path('signup_page') }}'class="btn btn-light">Signup</a>
-                <a href = '{{ path('login_page') }}' class="btn btn-warning">Login</a>
+                {% if app.user %}
+                    <a href="{{ path('logout_page') }}" class="btn btn-warning" style="padding-left: 2.5rem; padding-right: 2.5rem;">Logout</a>
+                {% else %}
+                    <a href = '{{ path('signup_page') }}'class="btn btn-light">Signup</a>
+                    <a href = '{{ path('login_page') }}' class="btn btn-warning">Login</a>
+                {% endif %}
             </div>
         </div>
     </div>
