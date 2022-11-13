@@ -20,11 +20,11 @@
 {% endblock %}
 
 {% block body %}
-    <div class="alert alert-success text-center" role="alert">
-        {% for message in app.session.flashBag.get('success') %}
-            {{ message }}
-        {% endfor %}
-    </div>
+        <div class="alert alert-success text-center" role="alert">
+            {% for message in app.session.flashBag.get('success') %}
+                {{ message }}
+            {% endfor %}
+        </div>
     <div class="container-xl h-custom bg-dark bg-gradient bg-opacity-75 px-5 py-5 water_form_container">
             <div class="water_form_container_title mb-4">
                 <h1>Voeg een water toe</h1>

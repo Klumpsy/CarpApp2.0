@@ -4,6 +4,7 @@ namespace App\Controller\Wateren;
 
 use App\Entity\Water;
 use App\Forms\Wateren\WaterenEditType;
+use App\Service\ImageService;
 use App\Service\WaterService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,14 +16,24 @@ class WaterenEditController extends AbstractController
     #[Route('/wateren/{id}/edit', name:'wateren_page_edit')]
     public function index(
         Request $request,
-        WaterService $waterService
+        WaterService $waterService,
+        ImageService $imageService,
+        $id = 0
     ): Response {
 
-        $water = new Water();
+        $water = $waterService->find($id) ?? new Water();
         $form = $this->createForm(WaterenEditType::class, $water);
         $form->handleRequest($request);
 
         if($form->isSubmitted()) {
+
+            $image =  $request->files->get('wateren_edit');
+            $waterImageDirectory = $this->getParameter('water_directory');
+
+            if($image) {
+               $water->setImage($imageService->imageFileNameSanitizer($image, 'image', $waterImageDirectory));
+            }
+
             $waterService->saveWater($water);
 
             $this->addFlash('success', 'Een nieuw water met de naam ' . $water->getName() . ' is aangemaakt');

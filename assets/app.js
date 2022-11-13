@@ -9,6 +9,7 @@
 import './styles/app.css';
 import './styles/bootstrap.css';
 import './styles/profile_page.css';
+import './styles/water_overview_page.css';
 
 // start the Stimulus application
 import './bootstrap';

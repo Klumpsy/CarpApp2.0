@@ -73,7 +73,8 @@ class WaterenEditType  extends AbstractType
                 ]
             ])
             ->add('image', FileType::class, [
-                'label' => 'Foto'
+                'label' => 'Foto',
+                'data_class' => null
             ])
 
             ->add('save', SubmitType::class, [

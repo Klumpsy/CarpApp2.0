@@ -7,17 +7,18 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class WaterenController extends AbstractController
+class WaterDetailPageController extends AbstractController
 {
-    #[Route('/wateren', name:'wateren_page')]
+    #[Route('/wateren/{id}/details', name:'wateren_detail_page')]
     public function index(
-        WaterService $waterService
+        WaterService $waterService,
+        $id
     ): Response {
 
-        $wateren = $waterService->getAllFishingWater();
+        $water = $waterService->find($id);
 
         return $this->render('Wateren/wateren_index.html.twig', [
-            'wateren' => $wateren
+            'water' => $water
         ]);
     }
 }

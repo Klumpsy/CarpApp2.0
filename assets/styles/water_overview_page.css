@@ -1,0 +1,52 @@
+.water_card_container {
+  border: 2px solid #8ab478;
+  max-width: 540px;
+  min-width: 540px;
+  max-height: 100px;
+  color: white;
+}
+.water_card_container .card_body_water {
+  position: relative;
+}
+.water_card_container .card_body_water .edit_icon_water_detail_page {
+  color: white;
+  position: absolute;
+  right: 14px;
+  top: 10px;
+}
+.water_card_container .card_body_water .edit_icon_water_detail_page:hover {
+  cursor: pointer;
+}
+.water_card_container .card_body_water .edit_icon_water_detail_page:hover {
+  color: #8ab478;
+}
+.water_card_container .card_body_water .info_icon_water_overview_page {
+  color: white;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+.water_card_container .card_body_water .info_icon_water_overview_page:hover {
+  cursor: pointer;
+}
+.water_card_container .card_body_water .info_icon_water_overview_page:hover {
+  color: #8ab478;
+}
+.water_card_container .image_water_container {
+  position: relative;
+}
+.water_card_container .image_water_container img {
+  max-height: 95px;
+}
+.water_card_container .image_water_container .caught_fish_counter {
+  position: absolute;
+  font-weight: 700;
+  left: 10px;
+  padding: 5px;
+  border-radius: 10px;
+  top: -30px;
+  background-color: #8ab478;
+  min-width: 3rem;
+}
+
+/*# sourceMappingURL=water_overview_page.css.map */

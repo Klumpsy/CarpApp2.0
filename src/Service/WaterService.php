@@ -2,10 +2,8 @@
 
 namespace App\Service;
 
-use App\Entity\User;
 use App\Entity\Water;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class WaterService
 {
@@ -18,5 +16,15 @@ class WaterService
     {
         $this->entityManager->persist($water);
         $this->entityManager->flush();
+    }
+
+    public function find(string $id)
+    {
+        return $this->entityManager->find(Water::class, $id);
+    }
+
+    public function getAllFishingWater(): array
+    {
+        return $this->entityManager->getRepository(Water::class)->findAll();
     }
 }
