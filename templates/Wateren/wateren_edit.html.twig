@@ -1,0 +1,144 @@
+{% extends 'base.html.twig' %}
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .water_form_container {
+            color: white;
+        }
+
+        #wateren_edit_accessibility {
+            padding: 2px;
+            border-radius: 10px;
+        }
+
+        .water_form_container_title {
+            border-bottom: 1px solid white;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="alert alert-success text-center" role="alert">
+        {% for message in app.session.flashBag.get('success') %}
+            {{ message }}
+        {% endfor %}
+    </div>
+    <div class="container-xl h-custom bg-dark bg-gradient bg-opacity-75 px-5 py-5 water_form_container">
+            <div class="water_form_container_title mb-4">
+                <h1>Voeg een water toe</h1>
+            </div>
+            {{ form_start(form) }}
+           <div class="row">
+               <div class="form-row col-sm">
+                   <div class="col-md-8 mb-3">
+                       {{ form_label(form.name) }}
+                       {{ form_widget(form.name) }}
+                   </div>
+                   <div class="col-md-8 mb-3">
+                       {{ form_label(form.country) }}
+                       {{ form_widget(form.country)}}
+                   </div>
+                   <div class="col-md-8 mb-3">
+                       {{ form_label(form.type) }}
+                       {{ form_widget(form.type) }}
+                   </div>
+                   <div class="col-md-8 mb-3">
+                       {{ form_label(form.size) }}
+                       {{ form_widget(form.size) }}
+                   </div>
+               </div>
+               <div class="form-row col-sm mt-5">
+                   <div class="col-md-4 mb-3">
+                       {{ form_label(form.boat) }}
+                       {{ form_widget(form.boat) }}
+                   </div>
+                   <div class="col-md-4 mb-3">
+                       {{ form_label(form.baitBoat) }}
+                       {{ form_widget(form.baitBoat) }}
+                   </div>
+                   <div class="col-md-4 mb-3">
+                       {{ form_label(form.nightFishing) }}
+                       {{ form_widget(form.nightFishing) }}
+                   </div>
+                   <div class="col-md-4 mb-3">
+                       {{ form_label(form.smallFish) }}
+                       {{ form_widget(form.smallFish) }}
+                   </div>
+                   <div class="col-md-4 mb-3">
+                       {{ form_label(form.hardWater) }}
+                       {{ form_widget(form.hardWater) }}
+                   </div>
+                   <div class="col-md-4 mb-3">
+                       {{ form_label(form.bigFish) }}
+                       {{ form_widget(form.bigFish) }}
+                   </div>
+                   <div class="col-md-4 mb-3">
+                       {{ form_label(form.crayfish) }}
+                       {{ form_widget(form.crayfish) }}
+                   </div>
+               </div>
+               <div class="row">
+                   <div class="col-md-8 mb-6">
+                       <div>
+                           {{ form_label(form.accessibility) }}
+                           <span id="javascript_accessibility_output"></span>
+                       </div>
+                       {{ form_widget(form.accessibility) }}
+                   </div>
+                   <div class="col-md-8 mb-6 mt-3">
+                       {{ form_label(form.notes) }}
+                       {{ form_widget(form.notes) }}
+                   </div>
+                   <div class="col-md-5 mb-6 mt-3 mb-3">
+                       {{ form_label(form.image) }}
+                       {{ form_widget(form.image) }}
+                   </div>
+               </div>
+               <div class="row">
+                   <div class="col-md-4 mb-6 mt-5">
+                       {{ form_widget(form.save) }}
+                   </div>
+               </div>
+           </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        window.onload = () => {
+            let inputSlider = document.querySelector('#wateren_edit_accessibility')
+            let javascriptAccessibilityOutput = document.querySelector('#javascript_accessibility_output');
+
+            inputSlider.addEventListener('change', () => {
+                checkBackGroundColor()
+            });
+
+            let checkBackGroundColor = () => {
+                if(inputSlider.value <= 30 ) {
+                    backGroundColor = '#89F0A2';
+                    javascriptAccessibilityOutput.innerHTML = `Makkelijk (${inputSlider.value}% moeilijkheid)`;
+                    javascriptAccessibilityOutput.style.color = '#89F0A2';
+                } else if (inputSlider.value > 30 && inputSlider.value <= 50) {
+                    backGroundColor = '#F0ED89';
+                    javascriptAccessibilityOutput.innerHTML = `Redelijk makkelijk (${inputSlider.value}% moeilijkheid)`;
+                    javascriptAccessibilityOutput.style.color = '#F0ED89';
+                } else if (inputSlider.value > 50 && inputSlider.value < 75) {
+                    backGroundColor = '#EEBF2C';
+                    javascriptAccessibilityOutput.innerHTML = `Moeilijk (${inputSlider.value}% moeilijkheid)`;
+                    javascriptAccessibilityOutput.style.color = '#EEBF2C';
+                } else {
+                    backGroundColor = '#EE752C';
+                    javascriptAccessibilityOutput.innerHTML = `Erg moeilijk (${inputSlider.value}% moeilijkheid)`;
+                    javascriptAccessibilityOutput.style.color = '#EE752C';
+                }
+                inputSlider.style.backgroundColor = backGroundColor;
+            }
+
+            checkBackGroundColor();
+        };
+    </script>
+{% endblock %}

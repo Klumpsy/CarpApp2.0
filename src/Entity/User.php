@@ -30,7 +30,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private string $name;
 
     #[ORM\Column(name: 'avatar', type: 'string', length: 255, nullable: true)]
-    #[Assert\NotBlank]
     private $avatar;
 
     #[ORM\Column(name: 'roles', type: 'json')]

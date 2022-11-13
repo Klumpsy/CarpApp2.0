@@ -4,8 +4,10 @@ namespace App\Controller\Profile;
 
 use App\Forms\Profile\ProfileImageType;
 use App\Service\UserService;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\HttpFoundation\File\Exception\UploadException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -13,7 +15,9 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 
 class ProfileImageEditController extends AbstractController
 {
+
     #[Route('/profile/avatar/edit', name:'profile_avatar_edit')]
+    #[IsGranted('ROLE_USER')]
     public function index(
         Request $request,
         UserService $userService,
@@ -40,7 +44,7 @@ class ProfileImageEditController extends AbstractController
                 try {
                     $image['avatar']->move($this->getParameter('avatar_directory'), $newFilename);
                 } catch (FileException $e) {
-                    // ... handle exception if something happens during file upload
+                    throw new UploadException('Er is iets verkeerd gegaan met het uploaden van jouw avatar');
                 }
             }
 
