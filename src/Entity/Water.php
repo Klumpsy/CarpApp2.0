@@ -3,12 +3,18 @@
 namespace App\Entity;
 
 use App\Repository\WaterRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: WaterRepository::class)]
 #[ORM\Table(name: 'water')]
 class Water
 {
+
+    public function __construct()
+    {
+        $this->caughtFish = new ArrayCollection();
+    }
 
     #[ORM\Id]
     #[ORM\Column(name: 'id', type: 'integer')]
@@ -56,6 +62,14 @@ class Water
 
     #[ORM\Column(name: 'image', type: 'string', length: 255, nullable: false)]
     private string $image;
+
+    #[ORM\OneToMany(mappedBy: 'water', targetEntity: CaughtFish::class)]
+    private $caughtFish;
+
+    public function __toString(): string
+    {
+        return $this->getName();
+    }
 
     /**
      * @return int
@@ -297,4 +311,20 @@ class Water
         $this->image = $image;
     }
 
+    /**
+     * @return array|ArrayCollection
+     */
+    public function getCaughtFish(): ArrayCollection|array
+    {
+        return $this->caughtFish;
+    }
+
+    public function addCaughtFish(CaughtFish $caughtFish): self
+    {
+        if (!$this->caughtFish->contains($caughtFish)) {
+            $this->caughtFish[] = $caughtFish;
+            $caughtFish->setWater($this);
+        }
+        return $this;
+    }
 }

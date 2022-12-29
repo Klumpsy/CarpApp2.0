@@ -1,0 +1,29 @@
+{% include 'base.html.twig' %}
+
+{% block body %}
+    {% if app.session.flashBag.get('success') %}
+        <div class="alert alert-success text-center" role="alert">
+            {% for message in app.session.flashBag.get('success') %}
+                {{ message }}
+            {% endfor %}
+        </div>
+    {% endif %}
+    <div class="container mt-5 mb-3">
+        <div class="row justify-content-around">
+            {% for fish in caught_fish %}
+                <div class="mt-3 mb-3 card image_water_container" style="width: 18rem;">
+                    <img src="{{ asset('images/caught_fish/' ~ fish.image ) }}" class="card-img-top mt-2" alt="Caught_fish">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ fish.weight }}</h5>
+                        <a class="info_icon_water_overview_page" href="{{ path('caught_fish_page_edit',{id: fish.id}) }}">
+                            <i class="fas fa-solid fa-pen"></i>
+                        </a>
+{#                        <a class="edit_icon_water_detail_page" href="{{ path('caught',{id: water.id}) }}">#}
+{#                            <i class="fas fa-solid fa-info "></i>#}
+{#                        </a>#}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .water_form_container {
+            color: white;
+        }
+
+        #wateren_edit_accessibility {
+            padding: 2px;
+            border-radius: 10px;
+        }
+
+        .water_form_container_title {
+            border-bottom: 1px solid white;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="container-xl h-custom bg-dark bg-gradient bg-opacity-75 px-5 py-5 water_form_container">
+        <div class="water_form_container_title mb-4">
+            <h1>Voeg een vangst toe</h1>
+        </div>
+        {{ form_start(form) }}
+        <div class="row">
+            <div class="form-row col-sm">
+                <div class="col-md-8 mb-3">
+                    {{ form_label(form.water) }}
+                    {{ form_widget(form.water) }}
+                </div>
+                <div class="col-md-8 mb-3">
+                    {{ form_label(form.weight) }}
+                    {{ form_widget(form.weight)}}
+                </div>
+                <div class="col-md-8 mb-3">
+                    {{ form_label(form.image) }}
+                    {{ form_widget(form.image) }}
+                </div>
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

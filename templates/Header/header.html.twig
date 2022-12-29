@@ -22,15 +22,20 @@
                     <a class="nav-link {% if app.request.get('_route') == 'fishing_session_collection'%}active{% endif %}" aria-current="page" href="#">Sessies</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle {% if app.request.get('_route') == 'water_collection'%}active{% endif %}" id="navbarDropdownMenuLink" aria-current="page" role="button" data-bs-toggle="dropdown" href="{{ path('wateren_page') }}">Wateren</a>
+                    <a class="nav-link dropdown-toggle {% if app.request.get('_route') == 'wateren_page'%}active{% endif %}" id="navbarDropdownMenuLink" aria-current="page" role="button" data-bs-toggle="dropdown" href="{{ path('wateren_page') }}">Wateren</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <li><a class="dropdown-item" href="{{ path('wateren_page') }}">Wateren</a></li>
                         <li><a class="dropdown-item" href="{{ path('wateren_page_edit', {id: 0}) }}">Water toevoegen</a></li>
                         <li><a class="dropdown-item" href="#">Water statistieken</a></li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link {% if app.request.get('_route') == 'catch_collection'%}active{% endif %}" aria-current="page" href="#">Vangsten</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle {% if app.request.get('_route') == 'caught_fish_page'%}active{% endif %}" id="navbarDropdownMenuLink" aria-current="page" role="button" data-bs-toggle="dropdown" href="{{ path('caught_fish_page') }}">Vangsten</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="{{ path('caught_fish_page') }}">Vangsten</a></li>
+                        <li><a class="dropdown-item" href="{{ path('caught_fish_page_edit', {id: 0}) }}">Vangst toevoegen</a></li>
+                        <li><a class="dropdown-item" href="#">Vangsten statistieken</a></li>
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {% if app.request.get('_route') == 'profile'%}active{% endif %}"

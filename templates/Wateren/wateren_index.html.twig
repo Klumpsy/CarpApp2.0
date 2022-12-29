@@ -2,31 +2,23 @@
 
 {% block body %}
     <div class="container mt-5 mb-3">
-        <div class="row">
+        <div class="row justify-content-around">
             {% for water in wateren %}
-                <div class="col">
-                    <div class="card mb-5 water_card_container bg-dark bg-gradient bg-opacity-85">
-                        <div class="row no-gutters">
-                            <div class="col-md-4 image_water_container">
-                               <span class="caught_fish_counter">
+                <div class="mt-3 mb-3 card image_water_container" style="width: 18rem;">
+                     <span class="caught_fish_counter">
                                    <i class="fas fa-solid fa-fish"></i>
                                    3
                                </span>
-                                <img src="{{ asset('images/fishing_water/' ~ water.image ) }}" class="card-img" alt="Water">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body card_body_water">
-                                    <a class="info_icon_water_overview_page" href="{{ path('wateren_page_edit',{id: water.id}) }}">
-                                        <i class="fas fa-solid fa-pen"></i>
-                                    </a>
-                                    <a class="edit_icon_water_detail_page" href="{{ path('wateren_detail_page',{id: water.id}) }}">
-                                        <i class="fas fa-solid fa-info "></i>
-                                    </a>
-                                    <h5 class="card-title">{{ water.name }}</h5>
-                                    <p class="card-text">{{ water.type}} - {{water.size}}(Ha)</p>
-                                </div>
-                            </div>
-                        </div>
+                    <img src="{{ asset('images/fishing_water/' ~ water.image ) }}" class="card-img-top" alt="Water">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ water.name }}</h5>
+                        <p class="card-text">{{ water.type }} - {{ water.size }}(Ha)</p>
+                        <a class="info_icon_water_overview_page" href="{{ path('wateren_page_edit',{id: water.id}) }}">
+                            <i class="fas fa-solid fa-pen"></i>
+                        </a>
+                        <a class="edit_icon_water_detail_page" href="{{ path('wateren_detail_page',{id: water.id}) }}">
+                            <i class="fas fa-solid fa-info "></i>
+                        </a>
                     </div>
                 </div>
             {% endfor %}

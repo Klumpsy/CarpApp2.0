@@ -35,13 +35,10 @@
 
   .image_water_container {
     position: relative;
-    img {
-      max-height: 95px;
-    }
     .caught_fish_counter {
       position: absolute;
       font-weight: 700;
-      left: 10px;
+      left: -210px;
       padding: 5px;
       border-radius: 10px;
       top: -30px;

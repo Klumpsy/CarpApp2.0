@@ -35,13 +35,10 @@
 .water_card_container .image_water_container {
   position: relative;
 }
-.water_card_container .image_water_container img {
-  max-height: 95px;
-}
 .water_card_container .image_water_container .caught_fish_counter {
   position: absolute;
   font-weight: 700;
-  left: 10px;
+  left: -210px;
   padding: 5px;
   border-radius: 10px;
   top: -30px;

@@ -6,7 +6,7 @@
 parameters:
     avatar_directory: '%kernel.project_dir%/public/images/avatars'
     water_directory: '%kernel.project_dir%/public/images/fishing_water'
-    vangsten_directory: '%kernel.project_dir%/public/images/caught_fish'
+    caught_fish_directory: '%kernel.project_dir%/public/images/caught_fish'
 
 
 services:
